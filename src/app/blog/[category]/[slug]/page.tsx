@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const categoryData: Record<string, {
   title: string;
@@ -15,7 +16,7 @@ const categoryData: Record<string, {
 }> = {
   'org-visioning': {
     title: 'Org Visioning',
-    icon: '🎯',
+    icon: '/icons/org-visioning.jpeg',
     color: 'bg-blue-50',
     textColor: 'text-blue-700',
     posts: {
@@ -137,7 +138,7 @@ const categoryData: Record<string, {
   },
   'software-tips-tactics': {
     title: 'Software Tips & Tactics',
-    icon: '💻',
+    icon: '/icons/software-tips-tactics.jpeg',
     color: 'bg-purple-50',
     textColor: 'text-purple-700',
     posts: {
@@ -193,7 +194,7 @@ const categoryData: Record<string, {
   },
   'social-media': {
     title: 'Social Media',
-    icon: '📱',
+    icon: '/icons/social-media.jpeg',
     color: 'bg-pink-50',
     textColor: 'text-pink-700',
     posts: {
@@ -249,7 +250,7 @@ const categoryData: Record<string, {
   },
   'communication-strategies': {
     title: 'Communication Strategies',
-    icon: '📢',
+    icon: '/icons/communication-strategies.jpeg',
     color: 'bg-orange-50',
     textColor: 'text-orange-700',
     posts: {
@@ -305,7 +306,7 @@ const categoryData: Record<string, {
   },
   'language-tactics': {
     title: 'Language Tactics',
-    icon: '✍️',
+    icon: '/icons/language-tactics.jpeg',
     color: 'bg-indigo-50',
     textColor: 'text-indigo-700',
     posts: {
@@ -367,7 +368,7 @@ const categoryData: Record<string, {
   },
   'working-with-ai': {
     title: 'Working with AI',
-    icon: '🤖',
+    icon: '/icons/working-with-ai.jpeg',
     color: 'bg-teal-50',
     textColor: 'text-teal-700',
     posts: {
@@ -470,7 +471,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ categ
             ← Back to {category.title}
           </Link>
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-3xl">{category.icon}</span>
+            {category.icon.startsWith('/') ? (
+              <Image 
+                src={category.icon} 
+                alt={category.title}
+                width={48}
+                height={48}
+                className="rounded-lg object-cover"
+                unoptimized
+              />
+            ) : (
+              <span className="text-3xl">{category.icon}</span>
+            )}
             <span className={`font-semibold ${category.textColor}`}>{category.title}</span>
           </div>
         </div>

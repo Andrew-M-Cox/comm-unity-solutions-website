@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ const blogCategories = [
     slug: 'org-visioning',
     title: 'Org Visioning',
     description: 'Forming organization-wide communication strategies and vision alignment',
-    icon: '🎯',
+    icon: '/icons/org-visioning.jpeg',
     color: 'bg-blue-50 border-blue-200',
     textColor: 'text-blue-700',
   },
@@ -27,7 +28,7 @@ const blogCategories = [
     slug: 'software-tips-tactics',
     title: 'Software Tips & Tactics',
     description: 'Practical guides for church management software and communication tools',
-    icon: '💻',
+    icon: '/icons/software-tips-tactics.jpeg',
     color: 'bg-purple-50 border-purple-200',
     textColor: 'text-purple-700',
   },
@@ -35,7 +36,7 @@ const blogCategories = [
     slug: 'social-media',
     title: 'Social Media',
     description: 'Church and faith-based organization social media strategies and best practices',
-    icon: '📱',
+    icon: '/icons/social-media.jpeg',
     color: 'bg-pink-50 border-pink-200',
     textColor: 'text-pink-700',
   },
@@ -43,7 +44,7 @@ const blogCategories = [
     slug: 'communication-strategies',
     title: 'Communication Strategies',
     description: 'How to prioritize and manage multiple projects and groups within your congregation',
-    icon: '📢',
+    icon: '/icons/communication-strategies.jpeg',
     color: 'bg-orange-50 border-orange-200',
     textColor: 'text-orange-700',
   },
@@ -51,7 +52,7 @@ const blogCategories = [
     slug: 'language-tactics',
     title: 'Language Tactics',
     description: 'Effective language and messaging for faith-based communication',
-    icon: '✍️',
+    icon: '/icons/language-tactics.jpeg',
     color: 'bg-indigo-50 border-indigo-200',
     textColor: 'text-indigo-700',
   },
@@ -59,7 +60,7 @@ const blogCategories = [
     slug: 'working-with-ai',
     title: 'Working with AI',
     description: 'Leveraging AI tools for church communication and content creation',
-    icon: '🤖',
+    icon: '/icons/working-with-ai.jpeg',
     color: 'bg-teal-50 border-teal-200',
     textColor: 'text-teal-700',
   },
@@ -86,7 +87,20 @@ export default function BlogPage() {
               className={`blog-card ${category.color} border-2`}
             >
               <div className="p-6">
-                <div className="text-5xl mb-4">{category.icon}</div>
+                <div className="mb-4">
+                  {category.icon.startsWith('/') ? (
+                    <Image 
+                      src={category.icon} 
+                      alt={category.title}
+                      width={80}
+                      height={80}
+                      className="rounded-lg object-cover"
+                      unoptimized
+                    />
+                  ) : (
+                    <span className="text-5xl">{category.icon}</span>
+                  )}
+                </div>
                 <h2 className={`text-2xl font-semibold mb-3 ${category.textColor}`}>
                   {category.title}
                 </h2>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ const blogCategories = [
     slug: 'org-visioning',
     title: 'Org Visioning',
     description: 'Forming organization-wide communication strategies and vision alignment',
-    icon: '🎯',
+    icon: '/icons/org-visioning.jpeg',
   },
   {
     slug: 'fundraising-stewardship',
@@ -23,31 +24,31 @@ const blogCategories = [
     slug: 'software-tips-tactics',
     title: 'Software Tips & Tactics',
     description: 'Practical guides for church management software and communication tools',
-    icon: '💻',
+    icon: '/icons/software-tips-tactics.jpeg',
   },
   {
     slug: 'social-media',
     title: 'Social Media',
     description: 'Church and faith-based organization social media strategies and best practices',
-    icon: '📱',
+    icon: '/icons/social-media.jpeg',
   },
   {
     slug: 'communication-strategies',
     title: 'Communication Strategies',
     description: 'How to prioritize and manage multiple projects and groups within your congregation',
-    icon: '📢',
+    icon: '/icons/communication-strategies.jpeg',
   },
   {
     slug: 'language-tactics',
     title: 'Language Tactics',
     description: 'Effective language and messaging for faith-based communication',
-    icon: '✍️',
+    icon: '/icons/language-tactics.jpeg',
   },
   {
     slug: 'working-with-ai',
     title: 'Working with AI',
     description: 'Leveraging AI tools for church communication and content creation',
-    icon: '🤖',
+    icon: '/icons/working-with-ai.jpeg',
   },
 ];
 
@@ -166,7 +167,20 @@ export default function Home() {
                 className="blog-card group"
               >
                 <div className="p-6">
-                  <div className="text-4xl mb-4">{category.icon}</div>
+                  <div className="mb-4">
+                    {category.icon.startsWith('/') ? (
+                      <Image 
+                        src={category.icon} 
+                        alt={category.title}
+                        width={64}
+                        height={64}
+                        className="rounded-lg object-cover"
+                        unoptimized
+                      />
+                    ) : (
+                      <span className="text-4xl">{category.icon}</span>
+                    )}
+                  </div>
                   <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-primary-600 transition-colors">
                     {category.title}
                   </h3>

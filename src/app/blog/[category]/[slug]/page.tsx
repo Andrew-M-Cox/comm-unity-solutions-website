@@ -82,7 +82,7 @@ const categoryData: Record<string, {
   },
   'fundraising-stewardship': {
     title: 'Fundraising & Stewardship',
-    icon: '💰',
+    icon: '/icons/fundraising-stewardship.jpeg',
     color: 'bg-green-50',
     textColor: 'text-green-700',
     posts: {

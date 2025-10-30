@@ -20,7 +20,7 @@ const blogCategories = [
     slug: 'fundraising-stewardship',
     title: 'Fundraising & Stewardship',
     description: 'Effective communication strategies for fundraising and stewardship campaigns',
-    icon: '💰',
+    icon: '/icons/fundraising-stewardship.jpeg',
     color: 'bg-green-50 border-green-200',
     textColor: 'text-green-700',
   },

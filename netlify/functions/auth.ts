@@ -36,27 +36,17 @@ export const handler: Handler = async (event, context) => {
       (event.headers['x-forwarded-proto'] || 'https') + '://' + event.headers.host;
 
     // If no code, this is the initial OAuth request - redirect to GitHub
-    // Return HTML that performs redirect (works even from AJAX/fetch)
+    // Use 302 redirect which should work for window.open/popup
     if (!code) {
       const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(siteUrl + '/api/auth')}&scope=repo`;
       
-      // Return HTML page that redirects - this works from AJAX calls
+      // Return 302 redirect - Decap CMS should open this in a popup/window
       return {
-        statusCode: 200,
+        statusCode: 302,
         headers: {
-          'Content-Type': 'text/html',
+          Location: githubAuthUrl,
         } as Record<string, string>,
-        body: `<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="refresh" content="0; url=${githubAuthUrl.replace(/"/g, '&quot;')}">
-  <script>window.location.href = ${JSON.stringify(githubAuthUrl)};</script>
-</head>
-<body>
-  <p>Redirecting to GitHub...</p>
-  <script>window.location.href = ${JSON.stringify(githubAuthUrl)};</script>
-</body>
-</html>`,
+        body: '',
       };
     }
 

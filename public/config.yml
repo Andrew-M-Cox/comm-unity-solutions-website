@@ -1,0 +1,70 @@
+backend:
+  name: github
+  repo: Andrew-M-Cox/comm-unity-solutions-website
+  branch: main
+  base_url: https://community-solutions.netlify.app
+  auth_endpoint: api/auth
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{category}}/{{slug}}"
+    identifier_field: title
+    summary: "{{title}} - {{date}}"
+    fields:
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Org Visioning", value: "org-visioning" }
+          - { label: "Fundraising & Stewardship", value: "fundraising-stewardship" }
+          - { label: "Software Tips & Tactics", value: "software-tips-tactics" }
+          - { label: "Social Media", value: "social-media" }
+          - { label: "Communication Strategies", value: "communication-strategies" }
+          - { label: "Language Tactics", value: "language-tactics" }
+          - { label: "Working with AI", value: "working-with-ai" }
+        required: true
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: true
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        required: true
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        required: true
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        buttons:
+          - bold
+          - italic
+          - link
+          - heading-two
+          - heading-three
+          - quote
+          - code
+          - bulleted-list
+          - numbered-list
+        editor_components: ["image"]
+        required: true
+      - label: "Canva Embed Code"
+        name: "canvaEmbed"
+        widget: "code"
+        default_language: "html"
+        output_code_only: true
+        required: false
+        hint: "Paste your Canva embed code here. It will be inserted into your post body."

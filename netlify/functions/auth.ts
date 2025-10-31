@@ -48,16 +48,71 @@ export const handler: Handler = async (event, context) => {
       };
     }
 
-    // If code exists, exchange it for token via proxy
-    const proxyUrl = `${siteUrl}/.netlify/functions/github-oauth-proxy?code=${encodeURIComponent(code)}`;
-    
-    return {
-      statusCode: 302,
-      headers: {
-        Location: proxyUrl,
-      } as Record<string, string>,
-      body: '',
-    };
+    // If code exists, exchange it for token directly
+    try {
+      const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          client_id: clientId,
+          client_secret: clientSecret,
+          code: code,
+        }),
+      });
+
+      if (!tokenResponse.ok) {
+        const errorText = await tokenResponse.text();
+        console.error('GitHub OAuth error:', errorText);
+        return {
+          statusCode: 400,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          } as Record<string, string>,
+          body: JSON.stringify({ error: 'Failed to exchange code for token' }),
+        };
+      }
+
+      const tokenData = await tokenResponse.json();
+
+      if (tokenData.error) {
+        return {
+          statusCode: 400,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          } as Record<string, string>,
+          body: JSON.stringify({ 
+            error: tokenData.error_description || tokenData.error 
+          }),
+        };
+      }
+
+      // Return the access token to Decap CMS
+      return {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        } as Record<string, string>,
+        body: JSON.stringify({
+          token: tokenData.access_token,
+        }),
+      };
+    } catch (error) {
+      console.error('OAuth error:', error);
+      return {
+        statusCode: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        } as Record<string, string>,
+        body: JSON.stringify({ error: 'Internal server error' }),
+      };
+    }
   }
 
   return {

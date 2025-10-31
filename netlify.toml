@@ -6,12 +6,6 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Redirect admin routes
-[[redirects]]
-  from = "/admin/*"
-  to = "/admin/index.html"
-  status = 200
-
 # API routes for Decap CMS
 [[redirects]]
   from = "/api/auth"

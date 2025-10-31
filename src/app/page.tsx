@@ -1,56 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from "next";
+import { categoryMetadata } from '@/lib/categories';
 
 export const metadata: Metadata = {
   title: "CommUnity Solutions - Church & Faith-Based Communication Intelligence",
   description: "Premier space for progressive protestant church and faith-based non-profit communication intelligence. Consulting, strategy sessions, and expert guidance.",
 };
 
-const blogCategories = [
-  {
-    slug: 'org-visioning',
-    title: 'Org Visioning',
-    description: 'Forming organization-wide communication strategies and vision alignment',
-    icon: '/icons/org-visioning.jpeg',
-  },
-  {
-    slug: 'fundraising-stewardship',
-    title: 'Fundraising & Stewardship',
-    description: 'Effective communication strategies for fundraising and stewardship campaigns',
-    icon: '/icons/fundraising-stewardship.jpeg',
-  },
-  {
-    slug: 'software-tips-tactics',
-    title: 'Software Tips & Tactics',
-    description: 'Practical guides for church management software and communication tools',
-    icon: '/icons/software-tips-tactics.jpeg',
-  },
-  {
-    slug: 'social-media',
-    title: 'Social Media',
-    description: 'Church and faith-based organization social media strategies and best practices',
-    icon: '/icons/social-media.jpeg',
-  },
-  {
-    slug: 'communication-strategies',
-    title: 'Communication Strategies',
-    description: 'How to prioritize and manage multiple projects and groups within your congregation',
-    icon: '/icons/communication-strategies.jpeg',
-  },
-  {
-    slug: 'language-tactics',
-    title: 'Language Tactics',
-    description: 'Effective language and messaging for faith-based communication',
-    icon: '/icons/language-tactics.jpeg',
-  },
-  {
-    slug: 'working-with-ai',
-    title: 'Working with AI',
-    description: 'Leveraging AI tools for church communication and content creation',
-    icon: '/icons/working-with-ai.jpeg',
-  },
-];
+const blogCategories = Object.entries(categoryMetadata).map(([slug, metadata]) => ({
+  slug,
+  icon: metadata.icon,
+  title: metadata.title,
+  description: metadata.description,
+}));
 
 export default function Home() {
   return (

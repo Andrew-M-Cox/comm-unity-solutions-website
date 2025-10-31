@@ -1,0 +1,25 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Redirect admin routes
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+# API routes for Decap CMS
+[[redirects]]
+  from = "/api/auth"
+  to = "/.netlify/functions/auth"
+  status = 200
+
+[[redirects]]
+  from = "/.netlify/functions/github-oauth-proxy"
+  to = "/.netlify/functions/github-oauth-proxy"
+  status = 200
+

@@ -1,0 +1,223 @@
+(openalex) ➜  Community_Solutions_GH cd website
+(openalex) ➜  website npm install
+
+added 143 packages, and audited 144 packages in 12s
+
+38 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+(openalex) ➜  website npm run build
+
+> community-solutions-website@0.1.0 build
+> next build
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/andrew/Documents/Community_Solutions_GH/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/andrew/Documents/Community_Solutions_GH/website/package-lock.json
+
+   ▲ Next.js 15.5.6
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/app/blog/[category]/[slug]/page.tsx
+Error:   x Expected '}', got '<eof>'
+    ,-[/Users/andrew/Documents/Community_Solutions_GH/website/src/app/blog/[category]/[slug]/page.tsx:17:1]
+ 14 |   };
+ 15 | }
+ 16 | 
+ 17 | export default function BlogPostPage({ params }: { params: { category: string; slug: string } }) {
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/blog/[category]/[slug]/page.tsx
+
+./src/app/blog/[category]/page.tsx
+Error:   x Expected '}', got '<eof>'
+    ,-[/Users/andrew/Documents/Community_Solutions_GH/website/src/app/blog/[category]/page.tsx:16:1]
+ 13 |   };
+ 14 | }
+ 15 | 
+ 16 | export default function CategoryPage({ params }: { params: { category: string } }) {
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/blog/[category]/page.tsx
+
+
+> Build failed because of webpack errors
+(openalex) ➜  website cd website/out
+python3 -m http.server 8000
+cd: no such file or directory: website/out
+Serving HTTP on :: port 8000 (http://[::]:8000/) ...
+^C
+Keyboard interrupt received, exiting.
+(openalex) ➜  website cd out
+(openalex) ➜  out python3 -m http:server 8000
+/opt/homebrew/opt/python@3.13/bin/python3.13: No module named http:server
+(openalex) ➜  out python3 -m http.server 8000
+Serving HTTP on :: port 8000 (http://[::]:8000/) ...
+::1 - - [29/Oct/2025 16:04:18] "GET / HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /_next/static/css/3b6057eb30100483.css HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /_next/static/chunks/webpack-2eb758dea75faf50.js HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /_next/static/chunks/4bd1b696-c023c6e3521b1417.js HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /_next/static/chunks/main-app-fb1e0a117bb65ae1.js HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /_next/static/chunks/255-5d038f43a4c9d328.js HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /_next/static/chunks/app/layout-c8b3a6565eb66c17.js HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /_next/static/chunks/619-ba102abea3e3d0e4.js HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /_next/static/chunks/app/page-7c5d94cbcb91daa6.js HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /services.txt?_rsc=3lb4g HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /blog.txt?_rsc=3lb4g HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] "GET /about.txt?_rsc=3lb4g HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:18] code 404, message File not found
+::1 - - [29/Oct/2025 16:04:18] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Oct/2025 16:04:32] "GET /blog/org-visioning.txt?_rsc=hoa4u HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:32] "GET /blog/fundraising-stewardship.txt?_rsc=hoa4u HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:32] "GET /blog/social-media.txt?_rsc=hoa4u HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:32] "GET /blog/software-tips-tactics.txt?_rsc=hoa4u HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:32] "GET /blog/communication-strategies.txt?_rsc=hoa4u HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:32] "GET /blog/language-tactics.txt?_rsc=hoa4u HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:32] "GET /blog/working-with-ai.txt?_rsc=hoa4u HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:40] "GET /blog/org-visioning/establishing-communication-vision.txt?_rsc=10lg9 HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:40] "GET /blog/org-visioning/vision-implementation-roadmap.txt?_rsc=10lg9 HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:40] "GET /blog/org-visioning/aligning-teams-around-vision.txt?_rsc=10lg9 HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:50] code 404, message File not found
+::1 - - [29/Oct/2025 16:04:50] "GET /services HTTP/1.1" 404 -
+::1 - - [29/Oct/2025 16:04:51] "GET /blog HTTP/1.1" 301 -
+::1 - - [29/Oct/2025 16:04:51] "GET /blog/ HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:04:52] code 404, message File not found
+::1 - - [29/Oct/2025 16:04:52] "GET /about HTTP/1.1" 404 -
+^C
+Keyboard interrupt received, exiting.
+(openalex) ➜  out python3 -m http.server 8000
+Serving HTTP on :: port 8000 (http://[::]:8000/) ...
+::1 - - [29/Oct/2025 16:05:03] "GET / HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /_next/static/css/3b6057eb30100483.css HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /_next/static/chunks/webpack-2eb758dea75faf50.js HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /_next/static/chunks/app/page-7c5d94cbcb91daa6.js HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /_next/static/chunks/4bd1b696-c023c6e3521b1417.js HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /_next/static/chunks/app/layout-c8b3a6565eb66c17.js HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /_next/static/chunks/255-5d038f43a4c9d328.js HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /_next/static/chunks/619-ba102abea3e3d0e4.js HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /_next/static/chunks/main-app-fb1e0a117bb65ae1.js HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /services.txt?_rsc=3lb4g HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /blog.txt?_rsc=3lb4g HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:03] "GET /about.txt?_rsc=3lb4g HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:33] "GET /blog/software-tips-tactics.txt?_rsc=hoa4u HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:33] "GET /blog/org-visioning.txt?_rsc=hoa4u HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:33] "GET /blog/fundraising-stewardship.txt?_rsc=hoa4u HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:33] "GET /blog/social-media.txt?_rsc=hoa4u HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:33] "GET /blog/communication-strategies.txt?_rsc=hoa4u HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:33] "GET /blog/language-tactics.txt?_rsc=hoa4u HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:33] "GET /blog/working-with-ai.txt?_rsc=hoa4u HTTP/1.1" 304 -
+::1 - - [29/Oct/2025 16:05:37] "GET /blog/fundraising-stewardship/stewardship-campaign-messaging.txt?_rsc=34sdj HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:05:37] "GET /blog/fundraising-stewardship/digital-giving-campaigns.txt?_rsc=34sdj HTTP/1.1" 200 -
+::1 - - [29/Oct/2025 16:05:37] "GET /blog/fundraising-stewardship/year-end-fundraising-strategies.txt?_rsc=34sdj HTTP/1.1" 200 -
+::1 - - [30/Oct/2025 20:47:36] "GET /blog/fundraising-stewardship.txt?_rsc=hoa4u HTTP/1.1" 200 -
+::1 - - [30/Oct/2025 20:47:36] "GET /_next/static/chunks/356-f53269e63c687b55.js HTTP/1.1" 200 -
+::1 - - [30/Oct/2025 20:47:36] "GET /_next/static/css/5e77802a72c4a733.css HTTP/1.1" 200 -
+^C
+Keyboard interrupt received, exiting.
+(openalex) ➜  out npm install -g netlify-cli
+
+/opt/homebrew/lib/node_modules/npm/lib/cli/validate-engines.js:31
+    throw err
+    ^
+
+Error: ENOENT: no such file or directory, uv_cwd
+    at process.wrappedCwd (node:internal/bootstrap/switches/does_own_process_state:142:28)
+    at process.cwd (/opt/homebrew/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:10:19)
+    at new Config (/opt/homebrew/lib/node_modules/npm/node_modules/@npmcli/config/lib/index.js:71:19)
+    at new Npm (/opt/homebrew/lib/node_modules/npm/lib/npm.js:67:19)
+    at module.exports (/opt/homebrew/lib/node_modules/npm/lib/cli/entry.js:21:15)
+    at module.exports (/opt/homebrew/lib/node_modules/npm/lib/cli/validate-engines.js:39:10)
+    at module.exports (/opt/homebrew/lib/node_modules/npm/lib/cli.js:12:31)
+    at Object.<anonymous> (/opt/homebrew/lib/node_modules/npm/bin/npm-cli.js:2:25)
+    at Module._compile (node:internal/modules/cjs/loader:1739:14)
+    at Object..js (node:internal/modules/cjs/loader:1904:10) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'uv_cwd'
+}
+
+Node.js v23.6.0
+(openalex) ➜  out cd ..
+(openalex) ➜  website git:(main) ✗ npm install -g netlify-cli
+
+npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+
+added 1027 packages in 9s
+
+227 packages are looking for funding
+  run `npm fund` for details
+(openalex) ➜  website git:(main) ✗ netlify
+(openalex) ➜  netlify git:(main) ✗ netlify login
+
+
+Warning: some redirects have syntax errors:
+
+Could not parse redirect number 3:
+  {"from":"/.netlify/functions/github-oauth-proxy","to":"/.netlify/functions/github-oauth-proxy","status":200}
+"path" field must not start with "/.netlify"
+Logging into your Netlify account...
+Opening https://app.netlify.com/authorize?response_type=ticket&ticket=caf59aea1d2f2c93cc798680e0806da1
+
+You are now logged into your Netlify account!
+
+Run netlify status for account details
+
+To see all available commands run: netlify help
+
+(openalex) ➜  netlify git:(main) ✗ netlify link  # Link to your site
+
+
+Warning: some redirects have syntax errors:
+
+Could not parse redirect number 3:
+  {"from":"/.netlify/functions/github-oauth-proxy","to":"/.netlify/functions/github-oauth-proxy","status":200}
+"path" field must not start with "/.netlify"
+
+Adding local .netlify folder to .gitignore file...
+Git directory located in /Users/andrew/Documents/Community_Solutions_GH/website
+
+netlify link will connect this folder to a project on Netlify
+
+? How do you want to link this folder to a project? 
+Use current git remote origin (https://github.com/An
+drew-M-Cox/comm-unity-solutions-website)
+
+✔ Found 1 project connected to https://github.com/Andrew-M-Cox/comm-unity-solutions-website
+
+Directory Linked
+
+Admin url: https://app.netlify.com/projects/community-solutions
+Project url:  https://comm-unitysolutions.com
+
+You can now run other `netlify` cli commands in this directory
+(openalex) ➜  netlify git:(main) ✗ netlify env:set GITHUB_CLIENT_ID "Ov23liGon8VYqipPI4Lt"
+
+Warning: some redirects have syntax errors:
+
+Could not parse redirect number 3:
+  {"from":"/.netlify/functions/github-oauth-proxy","to":"/.netlify/functions/github-oauth-proxy","status":200}
+"path" field must not start with "/.netlify"
+Set environment variable GITHUB_CLIENT_ID=Ov23liGon8VYqipPI4Lt in the all context
+(openalex) ➜  netlify git:(main) ✗ netlify env:set GITHUB_CLIENT_SECRET "8a747d8311a222323b73920b95988b228d8a0609"
+
+Warning: some redirects have syntax errors:
+
+Could not parse redirect number 3:
+  {"from":"/.netlify/functions/github-oauth-proxy","to":"/.netlify/functions/github-oauth-proxy","status":200}
+"path" field must not start with "/.netlify"
+Set environment variable GITHUB_CLIENT_SECRET=8a747d8311a222323b73920b95988b228d8a0609 in the all context
+(openalex) ➜  netlify git:(main) ✗  

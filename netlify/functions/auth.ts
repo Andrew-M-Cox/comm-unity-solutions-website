@@ -7,50 +7,78 @@ export const handler: Handler = async (event, context) => {
       statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type',
       } as Record<string, string>,
       body: '',
     };
   }
 
-  // Handle GET requests
-  if (event.httpMethod === 'GET') {
-    const { code } = event.queryStringParameters || {};
-    const clientId = process.env.GITHUB_CLIENT_ID;
-    const clientSecret = process.env.GITHUB_CLIENT_SECRET;
+  // Handle GET and POST requests (Decap CMS might use either)
+  const isGet = event.httpMethod === 'GET';
+  const isPost = event.httpMethod === 'POST';
+  
+  if (!isGet && !isPost) {
+    return {
+      statusCode: 405,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      } as Record<string, string>,
+      body: JSON.stringify({ error: 'Method not allowed' }),
+    };
+  }
+
+  // Get code from query string (GET) or body (POST)
+  const code = isGet 
+    ? (event.queryStringParameters || {}).code
+    : (event.body ? JSON.parse(event.body).code : null) || (event.queryStringParameters || {}).code;
     
-    if (!clientId || !clientSecret) {
-      return {
-        statusCode: 500,
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        } as Record<string, string>,
-        body: JSON.stringify({ error: 'Server configuration error' }),
-      };
-    }
+  const clientId = process.env.GITHUB_CLIENT_ID;
+  const clientSecret = process.env.GITHUB_CLIENT_SECRET;
+  
+  // Log for debugging (remove in production if needed)
+  console.log('Auth endpoint called:', {
+    method: event.httpMethod,
+    hasCode: !!code,
+    path: event.path,
+    query: event.queryStringParameters,
+  });
+  
+  if (!clientId || !clientSecret) {
+    console.error('Missing GitHub OAuth credentials');
+    return {
+      statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      } as Record<string, string>,
+      body: JSON.stringify({ error: 'Server configuration error' }),
+    };
+  }
 
-    // Get the site URL
-    const siteUrl = process.env.URL || 
-      (event.headers['x-forwarded-proto'] || 'https') + '://' + event.headers.host;
+  // Get the site URL
+  const siteUrl = process.env.URL || 
+    (event.headers['x-forwarded-proto'] || 'https') + '://' + event.headers.host;
 
-    // If no code, this is the initial OAuth request - redirect to GitHub
-    // Use 302 redirect which should work for window.open/popup
-    if (!code) {
-      const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(siteUrl + '/api/auth')}&scope=repo`;
-      
-      // Return 302 redirect - Decap CMS should open this in a popup/window
-      return {
-        statusCode: 302,
-        headers: {
-          Location: githubAuthUrl,
-        } as Record<string, string>,
-        body: '',
-      };
-    }
+  // If no code, this is the initial OAuth request - redirect to GitHub
+  // Use 302 redirect which should work for window.open/popup
+  if (!code) {
+    const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(siteUrl + '/api/auth')}&scope=repo`;
+    
+    console.log('Redirecting to GitHub OAuth:', githubAuthUrl);
+    
+    // Return 302 redirect - Decap CMS should open this in a popup/window
+    return {
+      statusCode: 302,
+      headers: {
+        Location: githubAuthUrl,
+      } as Record<string, string>,
+      body: '',
+    };
+  }
 
-    // If code exists, exchange it for token directly
+  // If code exists, exchange it for token directly
     try {
       const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
         method: 'POST',

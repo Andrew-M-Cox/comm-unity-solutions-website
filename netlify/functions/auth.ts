@@ -14,39 +14,41 @@ export const handler: Handler = async (event, context) => {
     };
   }
 
-  // Handle the OAuth callback from GitHub
+  // Handle GET requests
   if (event.httpMethod === 'GET') {
     const { code } = event.queryStringParameters || {};
-    
-    if (!code) {
-      return {
-        statusCode: 400,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      } as Record<string, string>,
-        body: JSON.stringify({ error: 'Missing authorization code' }),
-      };
-    }
-
-    // Get GitHub Client ID from environment
     const clientId = process.env.GITHUB_CLIENT_ID;
+    const clientSecret = process.env.GITHUB_CLIENT_SECRET;
     
-    if (!clientId) {
+    if (!clientId || !clientSecret) {
       return {
         statusCode: 500,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      } as Record<string, string>,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        } as Record<string, string>,
         body: JSON.stringify({ error: 'Server configuration error' }),
       };
     }
 
-    // Get the site URL (for redirect)
-    const siteUrl = process.env.URL || event.headers['x-forwarded-proto'] + '://' + event.headers.host;
-    
-    // Redirect to the OAuth proxy
+    // Get the site URL
+    const siteUrl = process.env.URL || 
+      (event.headers['x-forwarded-proto'] || 'https') + '://' + event.headers.host;
+
+    // If no code, this is the initial OAuth request - redirect to GitHub
+    if (!code) {
+      const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(siteUrl + '/api/auth')}&scope=repo`;
+      
+      return {
+        statusCode: 302,
+        headers: {
+          Location: githubAuthUrl,
+        } as Record<string, string>,
+        body: '',
+      };
+    }
+
+    // If code exists, exchange it for token via proxy
     const proxyUrl = `${siteUrl}/.netlify/functions/github-oauth-proxy?code=${encodeURIComponent(code)}`;
     
     return {
@@ -60,10 +62,10 @@ export const handler: Handler = async (event, context) => {
 
   return {
     statusCode: 405,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      } as Record<string, string>,
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    } as Record<string, string>,
     body: JSON.stringify({ error: 'Method not allowed' }),
   };
 };

@@ -36,15 +36,27 @@ export const handler: Handler = async (event, context) => {
       (event.headers['x-forwarded-proto'] || 'https') + '://' + event.headers.host;
 
     // If no code, this is the initial OAuth request - redirect to GitHub
+    // Return HTML that performs redirect (works even from AJAX/fetch)
     if (!code) {
       const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(siteUrl + '/api/auth')}&scope=repo`;
       
+      // Return HTML page that redirects - this works from AJAX calls
       return {
-        statusCode: 302,
+        statusCode: 200,
         headers: {
-          Location: githubAuthUrl,
+          'Content-Type': 'text/html',
         } as Record<string, string>,
-        body: '',
+        body: `<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="refresh" content="0; url=${githubAuthUrl.replace(/"/g, '&quot;')}">
+  <script>window.location.href = ${JSON.stringify(githubAuthUrl)};</script>
+</head>
+<body>
+  <p>Redirecting to GitHub...</p>
+  <script>window.location.href = ${JSON.stringify(githubAuthUrl)};</script>
+</body>
+</html>`,
       };
     }
 

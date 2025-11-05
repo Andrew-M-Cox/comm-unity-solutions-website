@@ -155,15 +155,79 @@ export const handler: Handler = async (event, context) => {
       };
     }
 
-    // Redirect to callback page with the token
-    const callbackUrl = `${siteUrl}/admin/auth-callback.html?token=${encodeURIComponent(tokenData.access_token)}`;
+    // Return HTML that sends postMessage to Decap CMS
+    // This must happen in the SAME popup window - no redirects!
+    const accessToken = tokenData.access_token;
+    
+    console.log('Token obtained, returning postMessage HTML');
     
     return {
-      statusCode: 302,
+      statusCode: 200,
       headers: {
-        Location: callbackUrl,
+        'Content-Type': 'text/html',
       } as Record<string, string>,
-      body: '',
+      body: `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Authentication Successful</title>
+          <style>
+            body {
+              font-family: sans-serif;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              min-height: 100vh;
+              margin: 0;
+              background: #f5f5f5;
+            }
+            .message {
+              text-align: center;
+              padding: 2rem;
+              background: white;
+              border-radius: 8px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+          </style>
+        </head>
+        <body>
+          <div class="message">
+            <p>Authentication successful! You can close this window.</p>
+          </div>
+          <script>
+            (function() {
+              console.log('OAuth callback: Sending token to Decap CMS');
+              
+              // Send postMessage in the format Decap CMS expects
+              const authData = {
+                token: ${JSON.stringify(accessToken)},
+                provider: 'github'
+              };
+              
+              console.log('Sending postMessage with data:', authData);
+              
+              if (window.opener) {
+                // Send to any origin - Decap CMS will validate
+                window.opener.postMessage(
+                  'authorization:github:success:' + JSON.stringify(authData),
+                  '*'
+                );
+                
+                console.log('postMessage sent, closing window in 1 second');
+                
+                // Close window after short delay
+                setTimeout(function() {
+                  window.close();
+                }, 1000);
+              } else {
+                console.error('No window.opener found - cannot send message to Decap CMS');
+              }
+            })();
+          </script>
+        </body>
+        </html>
+      `,
     };
   } catch (error) {
     console.error('OAuth error:', error);

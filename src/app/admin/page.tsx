@@ -1,9 +1,11 @@
 'use client';
 
 import Script from 'next/script';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function AdminPage() {
+  const [cmsLoaded, setCmsLoaded] = useState(false);
+  
   useEffect(() => {
     console.log('Admin page mounted');
     
@@ -17,12 +19,13 @@ export default function AdminPage() {
       
       console.log('Admin page received message:', event.data);
       
-      // Check if it's an authorization message
-      if (typeof event.data === 'string' && event.data.startsWith('authorization:github:success:')) {
-        console.log('OAuth success message received! Decap CMS should now authenticate.');
+      // Check if it's an authorization message (Decap CMS format)
+      if (event.data && typeof event.data === 'object' && event.data.type === 'authorization') {
+        console.log('OAuth success message received! Decap CMS should now authenticate automatically.');
+        console.log('Message data:', event.data.data);
         
         // Decap CMS will handle this message automatically
-        // We just log it for debugging
+        // The message format is: { type: 'authorization', provider: 'github', data: { token, ... } }
       }
     };
     

@@ -71,11 +71,21 @@
           
           // Send postMessage to Decap CMS in the format it expects
           if (window.opener) {
-            // Decap CMS listens for this specific message format
-            window.opener.postMessage(
-              'authorization:github:success:' + JSON.stringify(userData),
-              window.location.origin
-            );
+            // Decap CMS listens for this specific message format (JSON object, not string)
+            var message = {
+              type: 'authorization',
+              provider: 'github',
+              data: {
+                token: token,
+                login: user.login,
+                name: user.name || user.login,
+                avatar_url: user.avatar_url,
+                email: user.email
+              }
+            };
+            
+            console.log('Callback page: Sending postMessage:', message);
+            window.opener.postMessage(message, window.location.origin);
             
             console.log('Callback page: postMessage sent, closing window');
             

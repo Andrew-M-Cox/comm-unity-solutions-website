@@ -15,9 +15,23 @@ collections:
     create: true
     nested:
       depth: 10
+      summary: "{{title}}"
     slug: "{{category}}/{{slug}}"
     identifier_field: title
     summary: "{{title}} - {{date}}"
+    view_filters:
+      - label: "Drafts"
+        field: draft
+        pattern: true
+      - label: "Published"
+        field: draft
+        pattern: false
+    view_groups:
+      - label: "Category"
+        field: category
+      - label: "Status"
+        field: draft
+    sortable_fields: ['title', 'date', 'category', 'draft']
     fields:
       - label: "Category"
         name: "category"

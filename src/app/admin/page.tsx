@@ -7,13 +7,30 @@ export default function AdminPage() {
   useEffect(() => {
     console.log('Admin page mounted');
     
-    // Check if we have a token in localStorage (from OAuth callback)
-    const storedUser = localStorage.getItem('netlify-cms-user');
-    if (storedUser) {
-      console.log('Found stored user in localStorage:', storedUser);
-    } else {
-      console.log('No stored user found in localStorage');
-    }
+    // Listen for OAuth callback messages from the popup
+    const handleMessage = (event: MessageEvent) => {
+      // Verify the message is from our domain
+      if (event.origin !== window.location.origin) {
+        console.log('Message from different origin, ignoring:', event.origin);
+        return;
+      }
+      
+      console.log('Admin page received message:', event.data);
+      
+      // Check if it's an authorization message
+      if (typeof event.data === 'string' && event.data.startsWith('authorization:github:success:')) {
+        console.log('OAuth success message received! Decap CMS should now authenticate.');
+        
+        // Decap CMS will handle this message automatically
+        // We just log it for debugging
+      }
+    };
+    
+    window.addEventListener('message', handleMessage);
+    
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
   }, []);
   
   return (

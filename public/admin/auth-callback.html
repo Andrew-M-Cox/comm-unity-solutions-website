@@ -56,32 +56,36 @@
         .then(function(user) {
           console.log('Callback page: User info received', user);
           
-          // Store in Decap CMS format with full user object
+          // Prepare user data in Decap CMS format
           const userData = {
             token: token,
-            backendName: 'github',
+            provider: 'github',
             login: user.login,
-            name: user.name,
+            name: user.name || user.login,
             avatar_url: user.avatar_url,
             email: user.email
           };
           
-          localStorage.setItem('netlify-cms-user', JSON.stringify(userData));
-          console.log('Callback page: User data stored in localStorage', userData);
+          console.log('Callback page: Sending postMessage to opener with user data', userData);
+          document.querySelector('.message p').textContent = 'Authentication successful! Closing...';
           
-          document.querySelector('.message p').textContent = 'Authentication successful! Redirecting...';
-          
-          // Reload the opener window to trigger Decap CMS to check for the token
+          // Send postMessage to Decap CMS in the format it expects
           if (window.opener) {
-            window.opener.location.reload();
+            // Decap CMS listens for this specific message format
+            window.opener.postMessage(
+              'authorization:github:success:' + JSON.stringify(userData),
+              window.location.origin
+            );
             
+            console.log('Callback page: postMessage sent, closing window');
+            
+            // Close after a brief delay to ensure message is received
             setTimeout(function() {
-              console.log('Callback page: Closing window');
               window.close();
-            }, 1000);
+            }, 500);
           } else {
             console.error('Callback page: No window.opener found!');
-            document.querySelector('.message p').textContent = 'Error: Unable to communicate with main window.';
+            document.querySelector('.message p').textContent = 'Error: Unable to communicate with main window. Please close this window and try again.';
           }
         })
         .catch(function(error) {

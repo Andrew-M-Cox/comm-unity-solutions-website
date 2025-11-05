@@ -197,32 +197,63 @@ export const handler: Handler = async (event, context) => {
           </div>
           <script>
             (function() {
-              console.log('OAuth callback: Sending token to Decap CMS');
+              console.log('OAuth callback: Implementing two-way handshake with Decap CMS');
               
-              // Send postMessage in the format Decap CMS expects
               const authData = {
                 token: ${JSON.stringify(accessToken)},
                 provider: 'github'
               };
               
-              console.log('Sending postMessage with data:', authData);
+              if (!window.opener) {
+                console.error('No window.opener found - cannot communicate with Decap CMS');
+                return;
+              }
               
-              if (window.opener) {
-                // Send to any origin - Decap CMS will validate
-                window.opener.postMessage(
-                  'authorization:github:success:' + JSON.stringify(authData),
-                  '*'
-                );
+              // Step 1: Send initial "authorizing" message to notify Decap CMS
+              console.log('Step 1: Sending authorizing:github message');
+              window.opener.postMessage('authorizing:github', '*');
+              
+              // Step 2: Wait for acknowledgment from Decap CMS
+              console.log('Step 2: Waiting for acknowledgment from Decap CMS');
+              
+              var messageReceived = false;
+              
+              window.addEventListener('message', function receiveMessage(event) {
+                if (messageReceived) return;
                 
-                console.log('postMessage sent, closing window in 1 second');
+                console.log('Step 3: Received message from parent:', event.data);
                 
-                // Close window after short delay
+                // Decap CMS acknowledges - now we can send the token
+                messageReceived = true;
+                
+                var successMessage = 'authorization:github:success:' + JSON.stringify(authData);
+                console.log('Step 4: Sending success message:', successMessage);
+                
+                // Send token to the origin that responded
+                window.opener.postMessage(successMessage, event.origin);
+                
+                console.log('Two-way handshake complete, closing window');
+                
+                // Remove listener and close
+                window.removeEventListener('message', receiveMessage);
                 setTimeout(function() {
                   window.close();
                 }, 1000);
-              } else {
-                console.error('No window.opener found - cannot send message to Decap CMS');
-              }
+              });
+              
+              // Fallback: if no response after 5 seconds, try sending anyway
+              setTimeout(function() {
+                if (!messageReceived) {
+                  console.warn('No acknowledgment received after 5s, sending token anyway');
+                  window.opener.postMessage(
+                    'authorization:github:success:' + JSON.stringify(authData),
+                    '*'
+                  );
+                  setTimeout(function() {
+                    window.close();
+                  }, 1000);
+                }
+              }, 5000);
             })();
           </script>
         </body>

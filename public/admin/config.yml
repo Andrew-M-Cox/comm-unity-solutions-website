@@ -2,7 +2,7 @@ backend:
   name: github
   repo: Andrew-M-Cox/comm-unity-solutions-website
   branch: main
-  base_url: https://community-solutions.netlify.app
+  base_url: https://comm-unitysolutions.com
   auth_endpoint: api/auth
 
 media_folder: public/images

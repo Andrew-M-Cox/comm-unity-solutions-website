@@ -13,10 +13,7 @@ collections:
     label: "Blog Posts"
     folder: "content/blog"
     create: true
-    nested:
-      depth: 10
-      summary: "{{title}}"
-    slug: "{{category}}/{{slug}}"
+    path: "{{category}}/{{slug}}"
     identifier_field: title
     summary: "{{title}} - {{date}}"
     view_filters:

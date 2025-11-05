@@ -121,52 +121,15 @@ export const handler: Handler = async (event, context) => {
       };
     }
 
-    // Return an HTML page that sends the token to the popup window via postMessage
-    const html = `
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <meta charset="utf-8">
-          <title>Authenticating...</title>
-        </head>
-        <body>
-          <script>
-            (function() {
-              const data = {
-                token: "${tokenData.access_token}",
-                provider: "github"
-              };
-              
-              // Send message to opener window
-              if (window.opener) {
-                window.opener.postMessage(
-                  "authorization:github:success:" + JSON.stringify(data),
-                  "*"
-                );
-                
-                // Also listen for any messages from opener
-                window.addEventListener("message", function(e) {
-                  console.log("Popup received message:", e);
-                }, false);
-              }
-              
-              // Auto-close after a short delay
-              setTimeout(function() {
-                window.close();
-              }, 1000);
-            })();
-          </script>
-          <p>Authenticating... This window will close automatically.</p>
-        </body>
-      </html>
-    `;
+    // Redirect to callback page with the token
+    const callbackUrl = `${siteUrl}/admin/auth-callback.html?token=${encodeURIComponent(tokenData.access_token)}`;
     
     return {
-      statusCode: 200,
+      statusCode: 302,
       headers: {
-        'Content-Type': 'text/html',
+        Location: callbackUrl,
       } as Record<string, string>,
-      body: html,
+      body: '',
     };
   } catch (error) {
     console.error('OAuth error:', error);

@@ -44,14 +44,23 @@
         
         const message = "authorization:github:success:" + JSON.stringify(data);
         
-        if (window.opener) {
-          window.opener.postMessage(message, window.location.origin);
-          console.log('Sent message to opener:', message);
-        }
+        console.log('Callback page: Preparing to send message', { data, message });
         
-        setTimeout(function() {
-          window.close();
-        }, 1000);
+        if (window.opener) {
+          console.log('Callback page: window.opener exists, sending message');
+          window.opener.postMessage(message, '*');
+          console.log('Callback page: Message sent to opener');
+          
+          document.querySelector('.message p').textContent = 'Authentication successful! Closing window...';
+          
+          setTimeout(function() {
+            console.log('Callback page: Closing window');
+            window.close();
+          }, 2000);
+        } else {
+          console.error('Callback page: No window.opener found!');
+          document.querySelector('.message p').textContent = 'Error: Unable to communicate with main window.';
+        }
       } else if (code) {
         // If we have a code, exchange it for a token
         fetch('/.netlify/functions/auth?code=' + code)

@@ -36,27 +36,25 @@
       console.log('Callback page loaded', { code, token });
       
       if (token) {
-        // If we have a token, send it directly
-        const data = {
+        console.log('Callback page: Token received, storing in localStorage');
+        
+        // Store token in localStorage
+        localStorage.setItem('netlify-cms-user', JSON.stringify({
           token: token,
-          provider: 'github'
-        };
+          backendName: 'github'
+        }));
         
-        const message = "authorization:github:success:" + JSON.stringify(data);
+        console.log('Callback page: Token stored, reloading opener window');
+        document.querySelector('.message p').textContent = 'Authentication successful! Redirecting...';
         
-        console.log('Callback page: Preparing to send message', { data, message });
-        
+        // Reload the opener window to trigger Decap CMS to check for the token
         if (window.opener) {
-          console.log('Callback page: window.opener exists, sending message');
-          window.opener.postMessage(message, '*');
-          console.log('Callback page: Message sent to opener');
-          
-          document.querySelector('.message p').textContent = 'Authentication successful! Closing window...';
+          window.opener.location.reload();
           
           setTimeout(function() {
             console.log('Callback page: Closing window');
             window.close();
-          }, 2000);
+          }, 1000);
         } else {
           console.error('Callback page: No window.opener found!');
           document.querySelector('.message p').textContent = 'Error: Unable to communicate with main window.';

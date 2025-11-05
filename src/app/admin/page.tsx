@@ -5,24 +5,15 @@ import { useEffect } from 'react';
 
 export default function AdminPage() {
   useEffect(() => {
-    // Listen for OAuth messages from popup
-    const handleMessage = (event: MessageEvent) => {
-      console.log('Admin page received message:', event);
-      console.log('Message data:', event.data);
-      console.log('Message origin:', event.origin);
-      
-      // Log if it's an authorization message
-      if (typeof event.data === 'string' && event.data.includes('authorization:github:success')) {
-        console.log('✅ OAuth authorization message detected!');
-      }
-    };
+    console.log('Admin page mounted');
     
-    window.addEventListener('message', handleMessage);
-    console.log('Admin page: Message listener added');
-    
-    return () => {
-      window.removeEventListener('message', handleMessage);
-    };
+    // Check if we have a token in localStorage (from OAuth callback)
+    const storedUser = localStorage.getItem('netlify-cms-user');
+    if (storedUser) {
+      console.log('Found stored user in localStorage:', storedUser);
+    } else {
+      console.log('No stored user found in localStorage');
+    }
   }, []);
   
   return (
@@ -31,7 +22,13 @@ export default function AdminPage() {
         src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"
         strategy="afterInteractive"
         onLoad={() => {
-          console.log('Decap CMS script loaded');
+          console.log('Decap CMS script loaded successfully');
+          
+          // Log localStorage state after Decap CMS loads
+          const storedUser = localStorage.getItem('netlify-cms-user');
+          if (storedUser) {
+            console.log('Decap CMS should auto-authenticate with stored token');
+          }
         }}
       />
       <div id="nc-root"></div>

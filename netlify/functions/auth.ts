@@ -132,28 +132,31 @@ export const handler: Handler = async (event, context) => {
         <body>
           <script>
             (function() {
-              function receiveMessage(e) {
-                console.log("Received message:", e);
+              const data = {
+                token: "${tokenData.access_token}",
+                provider: "github"
+              };
+              
+              // Send message to opener window
+              if (window.opener) {
                 window.opener.postMessage(
-                  'authorization:github:success:${JSON.stringify({
-                    token: tokenData.access_token,
-                    provider: 'github'
-                  })}',
-                  e.origin
+                  "authorization:github:success:" + JSON.stringify(data),
+                  "*"
                 );
+                
+                // Also listen for any messages from opener
+                window.addEventListener("message", function(e) {
+                  console.log("Popup received message:", e);
+                }, false);
               }
-              window.addEventListener("message", receiveMessage, false);
-              // Send to opener
-              window.opener.postMessage(
-                'authorization:github:success:${JSON.stringify({
-                  token: tokenData.access_token,
-                  provider: 'github'
-                })}',
-                '*'
-              );
+              
+              // Auto-close after a short delay
+              setTimeout(function() {
+                window.close();
+              }, 1000);
             })();
           </script>
-          <p>Authenticating... You can close this window.</p>
+          <p>Authenticating... This window will close automatically.</p>
         </body>
       </html>
     `;

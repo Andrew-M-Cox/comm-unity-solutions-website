@@ -121,16 +121,49 @@ export const handler: Handler = async (event, context) => {
       };
     }
 
-    // Return the access token to Decap CMS
+    // Return an HTML page that sends the token to the popup window via postMessage
+    const html = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Authenticating...</title>
+        </head>
+        <body>
+          <script>
+            (function() {
+              function receiveMessage(e) {
+                console.log("Received message:", e);
+                window.opener.postMessage(
+                  'authorization:github:success:${JSON.stringify({
+                    token: tokenData.access_token,
+                    provider: 'github'
+                  })}',
+                  e.origin
+                );
+              }
+              window.addEventListener("message", receiveMessage, false);
+              // Send to opener
+              window.opener.postMessage(
+                'authorization:github:success:${JSON.stringify({
+                  token: tokenData.access_token,
+                  provider: 'github'
+                })}',
+                '*'
+              );
+            })();
+          </script>
+          <p>Authenticating... You can close this window.</p>
+        </body>
+      </html>
+    `;
+    
     return {
       statusCode: 200,
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'text/html',
       } as Record<string, string>,
-      body: JSON.stringify({
-        token: tokenData.access_token,
-      }),
+      body: html,
     };
   } catch (error) {
     console.error('OAuth error:', error);

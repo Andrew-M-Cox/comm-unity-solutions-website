@@ -4,6 +4,7 @@
 
 :root {
   --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-poppins: 'Poppins', system-ui, sans-serif;
 }
 
 @layer base {
@@ -12,12 +13,29 @@
   }
   
   body {
-    @apply text-gray-900 bg-white;
-    font-family: var(--font-inter);
+    @apply bg-white;
+    font-family: var(--font-poppins), Poppins, system-ui, sans-serif;
+    color: #000000;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.5;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold text-gray-900;
+    font-family: var(--font-poppins), Poppins, system-ui, sans-serif;
+    color: #2F3EA4;
+    font-weight: 700; /* Bold */
+  }
+  
+  h1 {
+    font-size: 1.5rem; /* 24px */
+  }
+  
+  h2 {
+    font-size: 1.25rem; /* 20px */
+  }
+  
+  h3 {
+    font-size: 1.125rem; /* 18px */
   }
 }
 
@@ -27,11 +45,11 @@
   }
   
   .btn-primary {
-    @apply inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200;
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-semibold rounded-lg text-black bg-primary-300 hover:bg-primary-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200;
   }
   
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 border-2 border-primary-600 text-sm sm:text-base font-medium rounded-lg text-primary-600 bg-white hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200;
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 border-2 border-primary-300 text-sm sm:text-base font-semibold rounded-lg text-primary-600 bg-white hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200;
   }
   
   .card {

@@ -3,7 +3,7 @@ title: "AI Ethics for Faith Organizations"
 date: "2024-01-15"
 category: "working-with-ai"
 excerpt: "Consider the ethical implications of using AI in church communication. Learn how to use AI tools responsibly and transparently while honoring your values."
-draft: false
+draft: true
 ---
 
 <p class="lead">Using AI in faith contexts requires careful consideration of ethical implications and alignment with your values.</p>

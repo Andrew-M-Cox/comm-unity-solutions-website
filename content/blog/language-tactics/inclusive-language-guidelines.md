@@ -3,7 +3,7 @@ title: "Inclusive Language Guidelines for Churches"
 date: "2024-01-21"
 category: "language-tactics"
 excerpt: "Learn how to use language that welcomes all members of your community. Explore guidelines for inclusive communication that honors diverse identities and experiences."
-draft: false
+draft: true
 ---
 
 <p class="lead">Inclusive language welcomes all members of your community and honors diverse identities and experiences.</p>

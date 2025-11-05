@@ -3,7 +3,7 @@ title: "AI Tools for Church Content Creation"
 date: "2024-01-23"
 category: "working-with-ai"
 excerpt: "Explore how AI can assist with writing newsletters, social media posts, and other church communications while maintaining authenticity and your unique voice."
-draft: false
+draft: true
 ---
 
 <p class="lead">AI can be a powerful assistant for church communication, but it requires thoughtful use to maintain authenticity.</p>

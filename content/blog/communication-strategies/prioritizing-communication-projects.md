@@ -3,7 +3,7 @@ title: "Prioritizing Communication Projects"
 date: "2024-01-19"
 category: "communication-strategies"
 excerpt: "When you have multiple groups, ministries, and initiatives, how do you decide what to communicate and when? Learn frameworks for prioritizing communication efforts effectively."
-draft: false
+draft: true
 ---
 
 <p class="lead">With limited resources and multiple groups, prioritization is essential for effective church communication.</p>

@@ -9,9 +9,13 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-2xl font-bold text-primary-700">
-            CommUnity Solutions
+        <div className="flex items-center justify-between py-4">
+          <Link href="/" className="flex items-center">
+            <img 
+              src="/logo-new.png" 
+              alt="CommUnity Solutions" 
+              style={{ height: '50px', width: 'auto' }}
+            />
           </Link>
           
           {/* Desktop Navigation */}
@@ -28,9 +32,9 @@ export default function Navbar() {
             <Link href="/about" className="text-gray-700 hover:text-primary-600 transition-colors">
               About
             </Link>
-            <a href="/services#contact" className="btn-primary">
+            <Link href="/contact" className="btn-primary">
               Get Started
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -86,13 +90,13 @@ export default function Navbar() {
               >
                 About
               </Link>
-              <a
-                href="/services#contact"
+              <Link
+                href="/contact"
                 className="btn-primary text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </div>
         )}

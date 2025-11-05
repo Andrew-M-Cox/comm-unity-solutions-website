@@ -3,7 +3,7 @@ title: "Establishing Your Communication Vision"
 date: "2024-01-15"
 category: "org-visioning"
 excerpt: "Learn how to develop a comprehensive communication vision that aligns with your church's mission and values. This foundational guide walks you through the process of creating a unified communication strategy."
-draft: false
+draft: true
 ---
 
 <p class="lead">Every great communication strategy begins with a clear vision. For progressive churches and faith-based organizations, this vision must align with your mission, values, and the communities you serve.</p>

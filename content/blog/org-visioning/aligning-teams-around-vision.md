@@ -3,7 +3,7 @@ title: "Aligning Teams Around Your Vision"
 date: "2024-01-10"
 category: "org-visioning"
 excerpt: "Practical strategies for ensuring all staff and volunteers understand and embody your communication vision. Discover frameworks for cross-departmental alignment and shared understanding."
-draft: false
+draft: true
 ---
 
 <p class="lead">A communication vision is only effective if everyone understands and embodies it. Here's how to ensure your entire team is aligned.</p>

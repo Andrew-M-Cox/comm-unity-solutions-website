@@ -3,7 +3,7 @@ title: "Vision Implementation Roadmap"
 date: "2024-01-05"
 category: "org-visioning"
 excerpt: "A step-by-step guide to implementing your communication vision across all channels and touchpoints. Learn how to prioritize initiatives and measure success."
-draft: false
+draft: true
 ---
 
 <p class="lead">Turning your communication vision into reality requires a clear roadmap. Here's a step-by-step approach to implementation.</p>

@@ -3,7 +3,7 @@ title: "Year-End Fundraising Communication Strategies"
 date: "2024-01-12"
 category: "fundraising-stewardship"
 excerpt: "Maximize your year-end giving with strategic communication timing and messaging. Explore proven approaches for connecting with donors during peak giving seasons."
-draft: false
+draft: true
 ---
 
 <p class="lead">Year-end giving represents a significant opportunity for churches. Strategic communication can maximize your impact.</p>

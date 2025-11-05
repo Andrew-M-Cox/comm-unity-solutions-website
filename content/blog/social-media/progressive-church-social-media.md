@@ -3,7 +3,7 @@ title: "Social Media Strategy for Progressive Churches"
 date: "2024-01-22"
 category: "social-media"
 excerpt: "Build an authentic social media presence that reflects your church's progressive values. Learn how to engage meaningfully with your community while staying true to your mission."
-draft: false
+draft: true
 ---
 
 <p class="lead">Building an authentic social media presence that reflects your progressive values requires intention and strategy.</p>

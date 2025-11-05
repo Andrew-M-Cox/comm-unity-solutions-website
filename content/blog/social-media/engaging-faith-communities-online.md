@@ -3,7 +3,7 @@ title: "Engaging Faith Communities Online"
 date: "2024-01-11"
 category: "social-media"
 excerpt: "Practical tactics for building community and engagement on social media platforms. Learn what types of content resonate with faith communities and how to foster meaningful conversations."
-draft: false
+draft: true
 ---
 
 <p class="lead">Meaningful engagement on social media requires understanding what resonates with faith communities.</p>

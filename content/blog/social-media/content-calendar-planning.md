@@ -3,7 +3,7 @@ title: "Content Calendar Planning for Churches"
 date: "2024-01-16"
 category: "social-media"
 excerpt: "Create a content calendar that balances worship, community, and social justice themes. Discover planning frameworks that help you maintain consistency and relevance."
-draft: false
+draft: true
 ---
 
 <p class="lead">A content calendar helps you maintain consistency and balance your messaging across themes and seasons.</p>

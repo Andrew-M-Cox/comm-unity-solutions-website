@@ -3,7 +3,7 @@ title: "Language for Crisis Communication"
 date: "2024-01-06"
 category: "language-tactics"
 excerpt: "When your church faces difficult situations, the words you choose matter. Learn how to communicate with compassion, transparency, and hope during challenging times."
-draft: false
+draft: true
 ---
 
 <p class="lead">Crisis communication requires special attention to language that offers compassion, transparency, and hope.</p>

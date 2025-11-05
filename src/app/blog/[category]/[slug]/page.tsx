@@ -11,7 +11,8 @@ export async function generateStaticParams() {
   const categories = Object.keys(categoryMetadata);
   
   for (const categorySlug of categories) {
-    const posts = await getCategoryPosts(categorySlug);
+    // Include drafts for building, but they'll still return 404 when accessed
+    const posts = await getCategoryPosts(categorySlug, true);
     for (const post of posts) {
       params.push({
         category: categorySlug,

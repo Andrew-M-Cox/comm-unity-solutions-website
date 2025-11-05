@@ -3,7 +3,7 @@ title: "Communicating Progressive Theology"
 date: "2024-01-17"
 category: "language-tactics"
 excerpt: "How to articulate progressive theological perspectives in accessible, compelling ways. Discover frameworks for explaining complex theological concepts to diverse audiences."
-draft: false
+draft: true
 ---
 
 <p class="lead">Articulating progressive theological perspectives requires clarity, accessibility, and authenticity.</p>

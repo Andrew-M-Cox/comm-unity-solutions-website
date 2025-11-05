@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from "next";
 import { categoryMetadata } from '@/lib/categories';
+import SocialLinks from '@/components/SocialLinks';
 
 export const metadata: Metadata = {
   title: "CommUnity Solutions - Church & Faith-Based Communication Intelligence",
@@ -22,89 +23,116 @@ export default function Home() {
       <section className="bg-gradient-to-br from-primary-50 via-white to-accent-50 py-20 lg:py-32">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Communication Intelligence for
-              <span className="text-primary-700"> Progressive Churches</span>
+            <h1 className="text-3xl md:text-5xl font-bold mb-6" style={{ color: '#2F3EA4' }}>
+              I'm Passionate About Helping Progressive Churches Be Heard
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              The premier space for progressive protestant church and faith-based non-profit communication intelligence.
-              Transform your organization's communication strategy with expert guidance and proven methodologies.
+            <p className="text-base md:text-lg mb-8 leading-relaxed" style={{ color: '#000000' }}>
+              In a world filled with loud, dogmatic voices and growing skepticism about faith, too many people don't even know that compassionate, justice-seeking congregations like yours exist. I help you cut through the noise with messaging that's relatable, authentic, and true to your mission — so your community's story of hope, inclusion, and love can reach the people who need it most.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/services" className="btn-primary">
-                Explore Our Services
+                Explore Services
               </Link>
               <Link href="/blog" className="btn-secondary">
-                Read Our Blog
+                Read the Blog
               </Link>
+              <a href="#founder" className="btn-secondary">
+                Meet the Founder
+              </a>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Founder Section */}
+      <section id="founder" className="py-20 bg-white">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            <Link href="/about" className="block hover:opacity-90 transition-opacity">
+              <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="/emily-headshot.jpg" 
+                    alt="Emily Cox" 
+                    className="w-48 h-48 rounded-full object-cover shadow-lg"
+                  />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#2F3EA4' }}>
+                    Meet Emily Cox, Founder
+                  </h2>
+                  <p className="text-base leading-relaxed mb-4" style={{ color: '#000000' }}>
+                    Meet Emily Cox, the founder of Comm-Unity Solutions LLC. With over a decade of church service and a communication degree from the University of Tulsa, Emily seamlessly integrates professional expertise with a passion for supporting churches. In the post-pandemic world, Emily saw a need to support ministry leaders in the ever-changing communication landscape.
+                  </p>
+                  <span className="text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+                    Read more about Emily →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#2F3EA4' }}>What I Offer</h2>
+            <p className="text-base md:text-lg max-w-3xl mx-auto" style={{ color: '#000000' }}>
               Tailored solutions to jumpstart and sustain your church's communication strategies and vision
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="card">
-              <div className="mb-4">
-                <span className="text-4xl">🤝</span>
-              </div>
-              <h3 className="text-2xl font-semibold mb-3">Retainer-Based Consulting</h3>
-              <p className="text-gray-600 mb-4">
-                Ongoing partnership for comprehensive communication strategy development and implementation. 
-                Get consistent guidance, strategic planning, and support tailored to your organization's unique needs.
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#2F3EA4' }}>Ongoing Consistent Support</h3>
+              <p className="mb-4 text-sm" style={{ color: '#000000' }}>
+                You don't have to do it all alone. I offer consistent, behind-the-scenes support that keeps your communications clear, unified, and mission-aligned. Whether it's writing, design, strategy, or formatting — I help you stay connected with your congregation and your community.
               </p>
-              <ul className="space-y-2 text-gray-600 mb-6">
+              <ul className="space-y-2 mb-6 text-sm" style={{ color: '#000000' }}>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-2">✓</span>
-                  <span>Strategic communication planning</span>
+                  <span className="text-primary-500 mr-2">✓</span>
+                  <span>Collaborative Communication Planning</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-2">✓</span>
-                  <span>Regular strategy reviews and adjustments</span>
+                  <span className="text-primary-500 mr-2">✓</span>
+                  <span>Monthly Check-Ins & Adjustments</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-2">✓</span>
-                  <span>Ongoing support and guidance</span>
+                  <span className="text-primary-500 mr-2">✓</span>
+                  <span>Encouragement & Guidance</span>
                 </li>
               </ul>
-              <Link href="/services#retainer" className="text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+              <Link href="/services#ongoing" className="text-primary-600 font-semibold hover:text-primary-700 transition-colors text-sm">
                 Learn more →
               </Link>
             </div>
 
             <div className="card">
-              <div className="mb-4">
-                <span className="text-4xl">🚀</span>
-              </div>
-              <h3 className="text-2xl font-semibold mb-3">Intensive 1:1 Strategy Sessions</h3>
-              <p className="text-gray-600 mb-4">
-                Focused, intensive sessions designed to jumpstart your church's communication strategies and vision. 
-                Perfect for organizations ready to make significant progress in a short timeframe.
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#2F3EA4' }}>Coaching & Strategic Help</h3>
+              <p className="mb-4 text-sm" style={{ color: '#000000' }}>
+                Together, we'll clarify your message, strengthen your strategy, and equip your team to tell your congregation's story in a way that connects with your community and reflects your faith.
               </p>
-              <ul className="space-y-2 text-gray-600 mb-6">
+              <ul className="space-y-2 mb-6 text-sm" style={{ color: '#000000' }}>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-2">✓</span>
-                  <span>Deep-dive strategy development</span>
+                  <span className="text-primary-500 mr-2">✓</span>
+                  <span>Vision & Strategy Development</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-2">✓</span>
-                  <span>Customized action plans</span>
+                  <span className="text-primary-500 mr-2">✓</span>
+                  <span>Skill-Building & Coaching</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-2">✓</span>
-                  <span>Immediate implementation guidance</span>
+                  <span className="text-primary-500 mr-2">✓</span>
+                  <span>Content & Brand Review</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-500 mr-2">✓</span>
+                  <span>Implementation Support</span>
                 </li>
               </ul>
-              <Link href="/services#intensive" className="text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+              <Link href="/services#coaching" className="text-primary-600 font-semibold hover:text-primary-700 transition-colors text-sm">
                 Learn more →
               </Link>
             </div>
@@ -116,8 +144,8 @@ export default function Home() {
       <section className="py-20 bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Explore Our Blog</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#2F3EA4' }}>Explore the Blog</h2>
+            <p className="text-base md:text-lg max-w-3xl mx-auto" style={{ color: '#000000' }}>
               Expert insights on communication intelligence for progressive churches and faith-based organizations
             </p>
           </div>
@@ -144,10 +172,10 @@ export default function Home() {
                       <span className="text-4xl">{category.icon}</span>
                     )}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-primary-600 transition-colors">
+                  <h3 className="text-lg font-bold mb-2" style={{ color: '#2F3EA4' }}>
                     {category.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-sm leading-relaxed" style={{ color: '#000000' }}>
                     {category.description}
                   </p>
                 </div>
@@ -164,17 +192,24 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary-700 text-white">
+      <section className="py-20 bg-blue-500 text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Communication?</h2>
-            <p className="text-xl text-primary-100 mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">Ready to Be Heard?</h2>
+            <p className="text-base md:text-lg mb-8">
               Let's work together to create a communication strategy that aligns with your mission and reaches your community effectively.
             </p>
-            <Link href="/services#contact" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+            <Link href="/contact" className="btn-primary">
               Get Started Today
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Social Links */}
+      <section className="py-12 bg-white">
+        <div className="container-custom">
+          <SocialLinks />
         </div>
       </section>
     </div>

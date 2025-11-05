@@ -36,8 +36,8 @@ function processContent(rawContent: string, canvaEmbed?: string): string {
   return content;
 }
 
-// Get all blog posts from a specific category
-export async function getCategoryPosts(category: string): Promise<BlogPost[]> {
+// Get all blog posts from a specific category (including drafts for build)
+export async function getCategoryPosts(category: string, includeDrafts: boolean = false): Promise<BlogPost[]> {
   const categoryPath = path.join(contentDirectory, category);
   
   if (!fs.existsSync(categoryPath)) {
@@ -65,8 +65,8 @@ export async function getCategoryPosts(category: string): Promise<BlogPost[]> {
       .use(rehypeStringify)
       .process(processedMarkdown);
 
-    // Skip draft posts
-    if (data.draft === true) {
+    // Skip draft posts unless includeDrafts is true
+    if (data.draft === true && !includeDrafts) {
       continue;
     }
 

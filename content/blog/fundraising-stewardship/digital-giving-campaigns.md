@@ -3,7 +3,7 @@ title: "Digital Giving Campaign Best Practices"
 date: "2024-01-08"
 category: "fundraising-stewardship"
 excerpt: "How to leverage digital channels for effective fundraising campaigns. From email sequences to social media strategies, learn what works in online stewardship communication."
-draft: false
+draft: true
 ---
 
 <p class="lead">Digital channels offer powerful opportunities for stewardship communication. Here's how to leverage them effectively.</p>

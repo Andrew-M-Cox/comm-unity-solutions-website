@@ -3,7 +3,7 @@ title: "Automation Strategies for Churches"
 date: "2024-01-09"
 category: "software-tips-tactics"
 excerpt: "Save time and improve consistency with communication automation. Discover which tasks to automate and how to maintain a personal touch in automated communications."
-draft: false
+draft: true
 ---
 
 <p class="lead">Strategic automation can free up time for meaningful work while maintaining personal connections.</p>

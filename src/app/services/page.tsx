@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "CommUnity Solutions - Services",
-  description: "Retainer-based consulting and intensive 1:1 strategy sessions for church communication intelligence",
+  description: "Ongoing support and strategic coaching for church communication excellence",
 };
 
 export default function ServicesPage() {
@@ -13,144 +13,111 @@ export default function ServicesPage() {
       <section className="bg-gradient-to-br from-primary-50 via-white to-accent-50 py-20">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Our Services
+            <h1 className="text-3xl md:text-5xl font-bold mb-6" style={{ color: '#2F3EA4' }}>
+              Services
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-base md:text-lg mb-8 leading-relaxed" style={{ color: '#000000' }}>
               Tailored solutions to jumpstart and sustain your church's communication strategies and vision
             </p>
           </div>
         </div>
       </section>
 
-      {/* Retainer-Based Consulting */}
-      <section id="retainer" className="py-20 bg-white">
+      {/* Ongoing Consistent Support */}
+      <section id="ongoing" className="py-20 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="text-5xl">🤝</span>
-              <h2 className="text-4xl font-bold text-gray-900">Retainer-Based Consulting</h2>
+            <div className="mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#2F3EA4' }}>Ongoing Consistent Support</h2>
             </div>
             
             <div className="prose prose-lg max-w-none mb-12">
-              <p className="text-xl text-gray-600 leading-relaxed">
-                For churches and faith-based organizations seeking ongoing partnership and comprehensive 
-                communication strategy development, our retainer-based consulting offers consistent guidance, 
-                strategic planning, and support tailored to your unique needs.
+              <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: '#000000' }}>
+                You don't have to do it all alone. I offer consistent, behind-the-scenes support that keeps your communications clear, unified, and mission-aligned. Whether it's writing, design, strategy, or formatting — I help you stay connected with your congregation and your community.
               </p>
               
-              <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">What's Included</h3>
-              <ul className="space-y-4 text-gray-700">
+              <h3 className="text-xl md:text-2xl font-bold mt-8 mb-4" style={{ color: '#2F3EA4' }}>What's Included</h3>
+              <ul className="space-y-4 text-sm" style={{ color: '#000000' }}>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-3 text-xl">✓</span>
+                  <span className="text-primary-500 mr-3 text-xl">✓</span>
                   <div>
-                    <strong className="text-gray-900">Strategic Communication Planning</strong>
-                    <p className="text-gray-600">Develop comprehensive communication strategies aligned with your mission, vision, and values. We'll work with you to create a unified approach that guides all your communication efforts.</p>
+                    <strong className="font-bold" style={{ color: '#2F3EA4' }}>Collaborative Communication Planning</strong>
+                    <p className="mt-1" style={{ color: '#000000' }}>I'll create a rhythm and structure for your ongoing communications that reflects your mission and values — and keeps you from reinventing the wheel every week.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-3 text-xl">✓</span>
+                  <span className="text-primary-500 mr-3 text-xl">✓</span>
                   <div>
-                    <strong className="text-gray-900">Regular Strategy Reviews and Adjustments</strong>
-                    <p className="text-gray-600">Monthly or quarterly check-ins to review progress, assess effectiveness, and adjust strategies based on evolving needs and opportunities.</p>
+                    <strong className="font-bold" style={{ color: '#2F3EA4' }}>Monthly Check-Ins & Adjustments</strong>
+                    <p className="mt-1" style={{ color: '#000000' }}>Stay on track with regular reviews that help you adjust messaging, timing, and visuals as your ministry evolves.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-3 text-xl">✓</span>
+                  <span className="text-primary-500 mr-3 text-xl">✓</span>
                   <div>
-                    <strong className="text-gray-900">Ongoing Support and Guidance</strong>
-                    <p className="text-gray-600">Access to expert guidance when you need it. Whether you're facing a communication challenge or seizing an opportunity, we're here to help.</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary-600 mr-3 text-xl">✓</span>
-                  <div>
-                    <strong className="text-gray-900">Content Review and Feedback</strong>
-                    <p className="text-gray-600">Review and provide feedback on key communications to ensure consistency, effectiveness, and alignment with your strategy.</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary-600 mr-3 text-xl">✓</span>
-                  <div>
-                    <strong className="text-gray-900">Team Training and Capacity Building</strong>
-                    <p className="text-gray-600">Work with your team to build communication skills and capacity, ensuring your organization can sustain effective communication long-term.</p>
+                    <strong className="font-bold" style={{ color: '#2F3EA4' }}>Encouragement & Guidance</strong>
+                    <p className="mt-1" style={{ color: '#000000' }}>Think of it as having a communications partner who understands ministry life — someone to help you stay creative, professional, consistent, and calm.</p>
                   </div>
                 </li>
               </ul>
 
-              <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Who It's For</h3>
-              <p className="text-gray-700">
-                This service is ideal for churches and faith-based organizations that want consistent, 
-                ongoing support in developing and maintaining effective communication strategies. Whether 
-                you're looking to build internal capacity or need expert guidance for complex communication 
-                challenges, retainer-based consulting provides the sustained partnership you need.
+              <h3 className="text-xl md:text-2xl font-bold mt-8 mb-4" style={{ color: '#2F3EA4' }}>Who It's For</h3>
+              <p className="text-sm md:text-base" style={{ color: '#000000' }}>
+                Perfect for part-time or full-time communications staff, solo pastors, or small congregations who want their message to reach farther — with less stress and more professionalism.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Intensive 1:1 Strategy Sessions */}
-      <section id="intensive" className="py-20 bg-gray-50">
+      {/* Coaching & Strategic Help */}
+      <section id="coaching" className="py-20 bg-gray-50">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="text-5xl">🚀</span>
-              <h2 className="text-4xl font-bold text-gray-900">Intensive 1:1 Strategy Sessions</h2>
+            <div className="mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#2F3EA4' }}>Coaching & Strategic Help</h2>
             </div>
             
             <div className="prose prose-lg max-w-none mb-12">
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Sometimes you need focused, intensive support to jumpstart your communication strategies 
-                and vision. Our intensive 1:1 strategy sessions are designed for organizations ready to 
-                make significant progress in a short timeframe.
+              <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: '#000000' }}>
+                Together, we'll clarify your message, strengthen your strategy, and equip your team to tell your congregation's story in a way that connects with your community and reflects your faith.
               </p>
               
-              <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">What's Included</h3>
-              <ul className="space-y-4 text-gray-700">
+              <h3 className="text-xl md:text-2xl font-bold mt-8 mb-4" style={{ color: '#2F3EA4' }}>What's Included</h3>
+              <ul className="space-y-4 text-sm" style={{ color: '#000000' }}>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-3 text-xl">✓</span>
+                  <span className="text-primary-500 mr-3 text-xl">✓</span>
                   <div>
-                    <strong className="text-gray-900">Deep-Dive Strategy Development</strong>
-                    <p className="text-gray-600">Intensive sessions focused on developing comprehensive communication strategies. We'll dive deep into your organization's needs, challenges, and opportunities.</p>
+                    <strong className="font-bold" style={{ color: '#2F3EA4' }}>Vision & Strategy Development</strong>
+                    <p className="mt-1" style={{ color: '#000000' }}>We'll explore what makes your ministry unique — then craft a plan that helps your communication flow from that identity.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-3 text-xl">✓</span>
+                  <span className="text-primary-500 mr-3 text-xl">✓</span>
                   <div>
-                    <strong className="text-gray-900">Customized Action Plans</strong>
-                    <p className="text-gray-600">Receive detailed, actionable plans tailored to your specific situation. Each plan includes clear steps, timelines, and success metrics.</p>
+                    <strong className="font-bold" style={{ color: '#2F3EA4' }}>Skill-Building & Coaching</strong>
+                    <p className="mt-1" style={{ color: '#000000' }}>Personalized coaching for staff or volunteers who handle communications, helping them grow in confidence and clarity.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-3 text-xl">✓</span>
+                  <span className="text-primary-500 mr-3 text-xl">✓</span>
                   <div>
-                    <strong className="text-gray-900">Immediate Implementation Guidance</strong>
-                    <p className="text-gray-600">Get hands-on support as you begin implementing your strategy. We'll help you navigate the first steps and address early challenges.</p>
+                    <strong className="font-bold" style={{ color: '#2F3EA4' }}>Content & Brand Review</strong>
+                    <p className="mt-1" style={{ color: '#000000' }}>We'll assess your current communication tools and ensure everything aligns with your values, audience, and goals.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-600 mr-3 text-xl">✓</span>
+                  <span className="text-primary-500 mr-3 text-xl">✓</span>
                   <div>
-                    <strong className="text-gray-900">Communication Vision Development</strong>
-                    <p className="text-gray-600">Work together to articulate a clear communication vision that aligns with your mission and guides all your communication efforts.</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary-600 mr-3 text-xl">✓</span>
-                  <div>
-                    <strong className="text-gray-900">Resource Toolkit</strong>
-                    <p className="text-gray-600">Access to templates, frameworks, and resources you can use immediately and adapt for your organization's needs.</p>
+                    <strong className="font-bold" style={{ color: '#2F3EA4' }}>Implementation Support</strong>
+                    <p className="mt-1" style={{ color: '#000000' }}>Guidance for putting your new strategy into action — from first steps to sustainable systems.</p>
                   </div>
                 </li>
               </ul>
 
-              <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Who It's For</h3>
-              <p className="text-gray-700">
-                Intensive sessions are perfect for churches and organizations that need a jumpstart on 
-                their communication strategy. Whether you're launching a new initiative, facing a major 
-                communication challenge, or ready to take your communication to the next level, these 
-                focused sessions provide the momentum and direction you need.
+              <h3 className="text-xl md:text-2xl font-bold mt-8 mb-4" style={{ color: '#2F3EA4' }}>Who It's For</h3>
+              <p className="text-sm md:text-base" style={{ color: '#000000' }}>
+                Ideal for churches with part-time or full-time communication staff, or organizations ready to refine and strengthen their public voice. Coaching & Strategic Help gives you the clarity, tools, and confidence to share your mission more effectively and faithfully.
               </p>
             </div>
           </div>
@@ -161,34 +128,34 @@ export default function ServicesPage() {
       <section className="py-20 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Which Service Is Right for You?</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center" style={{ color: '#2F3EA4' }}>Which Service Is Right for You?</h2>
             
             <div className="grid md:grid-cols-2 gap-8">
               <div className="card">
-                <h3 className="text-2xl font-semibold mb-4">Retainer-Based Consulting</h3>
-                <p className="text-gray-600 mb-6">
+                <h3 className="text-xl font-bold mb-4" style={{ color: '#2F3EA4' }}>Ongoing Consistent Support</h3>
+                <p className="mb-6 text-sm" style={{ color: '#000000' }}>
                   Choose this if you want ongoing partnership and support for developing and maintaining 
                   your communication strategy over time.
                 </p>
-                <ul className="space-y-2 text-gray-700 mb-6">
-                  <li>✓ Ongoing strategic guidance</li>
+                <ul className="space-y-2 mb-6 text-sm" style={{ color: '#000000' }}>
+                  <li>✓ Collaborative communication planning</li>
                   <li>✓ Regular check-ins and reviews</li>
-                  <li>✓ Sustained capacity building</li>
+                  <li>✓ Sustained support and guidance</li>
                   <li>✓ Long-term partnership</li>
                 </ul>
               </div>
               
               <div className="card">
-                <h3 className="text-2xl font-semibold mb-4">Intensive Strategy Sessions</h3>
-                <p className="text-gray-600 mb-6">
-                  Choose this if you need focused, intensive support to jumpstart your communication 
-                  strategy and vision.
+                <h3 className="text-xl font-bold mb-4" style={{ color: '#2F3EA4' }}>Coaching & Strategic Help</h3>
+                <p className="mb-6 text-sm" style={{ color: '#000000' }}>
+                  Choose this if you need focused support to clarify your message and strengthen 
+                  your team's communication skills.
                 </p>
-                <ul className="space-y-2 text-gray-700 mb-6">
-                  <li>✓ Deep-dive strategy development</li>
-                  <li>✓ Customized action plans</li>
-                  <li>✓ Immediate implementation guidance</li>
-                  <li>✓ Intensive, focused support</li>
+                <ul className="space-y-2 mb-6 text-sm" style={{ color: '#000000' }}>
+                  <li>✓ Vision and strategy development</li>
+                  <li>✓ Skill-building coaching sessions</li>
+                  <li>✓ Content and brand reviews</li>
+                  <li>✓ Implementation guidance</li>
                 </ul>
               </div>
             </div>
@@ -197,24 +164,24 @@ export default function ServicesPage() {
       </section>
 
       {/* Contact CTA */}
-      <section id="contact" className="py-20 bg-primary-700 text-white">
+      <section id="contact" className="py-20 bg-blue-500 text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
-            <p className="text-xl text-primary-100 mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">Ready to Get Started?</h2>
+            <p className="text-base md:text-lg mb-8">
               Let's work together to create a communication strategy that aligns with your mission 
-              and reaches your community effectively. Contact us to discuss which service is right 
+              and reaches your community effectively. Contact me to discuss which service is right 
               for your organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="mailto:hello@comm-unitysolutions.com" 
-                className="btn-primary bg-white text-primary-700 hover:bg-gray-100"
+              <Link 
+                href="/contact" 
+                className="btn-primary"
               >
-                Email Us
-              </a>
-              <Link href="/blog" className="btn-secondary border-white text-white hover:bg-white hover:text-primary-700">
-                Explore Our Blog
+                Contact Me
+              </Link>
+              <Link href="/blog" className="btn-secondary border-white text-white hover:bg-white hover:text-blue-500">
+                Explore the Blog
               </Link>
             </div>
           </div>

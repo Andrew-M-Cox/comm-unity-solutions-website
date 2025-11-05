@@ -3,7 +3,7 @@ title: "Multi-Channel Communication Coordination"
 date: "2024-01-13"
 category: "communication-strategies"
 excerpt: "Manage communication across newsletters, social media, websites, and in-person channels without losing consistency or overwhelming your team. Discover coordination strategies."
-draft: false
+draft: true
 ---
 
 <p class="lead">Coordinating communication across multiple channels requires careful planning and clear processes.</p>

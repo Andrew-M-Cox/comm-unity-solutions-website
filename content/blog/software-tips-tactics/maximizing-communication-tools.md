@@ -3,7 +3,7 @@ title: "Maximizing Your Communication Tools"
 date: "2024-01-14"
 category: "software-tips-tactics"
 excerpt: "Get the most out of your existing communication software. Learn advanced features and integrations that can streamline your church's communication workflow."
-draft: false
+draft: true
 ---
 
 <p class="lead">You likely have more tools available than you're using. Here's how to unlock their full potential.</p>

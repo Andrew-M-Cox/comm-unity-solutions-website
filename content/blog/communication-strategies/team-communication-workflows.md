@@ -3,7 +3,7 @@ title: "Team Communication Workflows"
 date: "2024-01-07"
 category: "communication-strategies"
 excerpt: "Create efficient workflows for your communication team that prevent bottlenecks and ensure timely delivery. Learn how to structure processes for small and large teams."
-draft: false
+draft: true
 ---
 
 <p class="lead">Efficient workflows prevent bottlenecks and ensure timely delivery of communication materials.</p>

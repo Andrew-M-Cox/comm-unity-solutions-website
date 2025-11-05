@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-poppins',
+});
 
 export const metadata: Metadata = {
   title: "CommUnity Solutions - Church & Faith-Based Communication Intelligence",
@@ -15,37 +22,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={poppins.variable}>
         <Navbar />
         <main className="min-h-screen">
           {children}
         </main>
         <footer className="bg-gray-900 text-white py-12">
           <div className="container-custom">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
               <div>
-                <h3 className="text-xl font-semibold mb-4">CommUnity Solutions</h3>
+                <h3 className="text-lg font-bold mb-4" style={{ color: '#8ae9d8' }}>CommUnity Solutions</h3>
                 <p className="text-gray-400">
-                  Premier space for church and faith-based non-profit communication intelligence.
+                  Helping progressive churches be heard with authentic, relatable messaging.
                 </p>
               </div>
               <div>
-                <h4 className="text-lg font-semibold mb-4">Services</h4>
+                <h4 className="text-base font-bold mb-4" style={{ color: '#8ae9d8' }}>Services</h4>
                 <ul className="space-y-2 text-gray-400">
-                  <li><a href="/services" className="hover:text-white transition-colors">Retainer Consulting</a></li>
-                  <li><a href="/services" className="hover:text-white transition-colors">Strategy Sessions</a></li>
+                  <li><a href="/services#ongoing" className="hover:text-white transition-colors">Ongoing Consistent Support</a></li>
+                  <li><a href="/services#coaching" className="hover:text-white transition-colors">Coaching & Strategic Help</a></li>
                 </ul>
               </div>
               <div>
-                <h4 className="text-lg font-semibold mb-4">Connect</h4>
+                <h4 className="text-base font-bold mb-4" style={{ color: '#8ae9d8' }}>Connect</h4>
                 <ul className="space-y-2 text-gray-400">
                   <li><a href="/blog" className="hover:text-white transition-colors">Blog</a></li>
                   <li><a href="/about" className="hover:text-white transition-colors">About</a></li>
-                  <li><a href="/services" className="hover:text-white transition-colors">Contact</a></li>
+                  <li><a href="/contact" className="hover:text-white transition-colors">Contact</a></li>
                 </ul>
               </div>
             </div>
-            <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
               <p>&copy; {new Date().getFullYear()} CommUnity Solutions. All rights reserved.</p>
             </div>
           </div>

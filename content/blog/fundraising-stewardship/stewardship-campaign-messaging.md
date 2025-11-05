@@ -3,7 +3,7 @@ title: "Crafting Effective Stewardship Campaign Messaging"
 date: "2024-01-18"
 category: "fundraising-stewardship"
 excerpt: "Learn how to communicate the importance of giving in ways that resonate with your congregation. Discover language that inspires generosity without feeling transactional."
-draft: false
+draft: true
 ---
 
 <p class="lead">Effective stewardship communication invites generosity without feeling transactional. Here's how to craft messages that inspire giving.</p>

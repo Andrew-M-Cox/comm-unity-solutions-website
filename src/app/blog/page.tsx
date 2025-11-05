@@ -18,8 +18,8 @@ export default function BlogPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white border-b border-gray-200">
         <div className="container-custom py-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">Blog</h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
+          <h1 className="text-5xl font-normal mb-4" style={{ color: '#2F3EA4' }}>Blog</h1>
+          <p className="text-xl max-w-3xl" style={{ color: '#333333' }}>
             Expert insights on communication intelligence for progressive churches and faith-based organizations
           </p>
         </div>
@@ -51,7 +51,7 @@ export default function BlogPage() {
                 <h2 className={`text-2xl font-semibold mb-3 ${category.textColor}`}>
                   {category.title}
                 </h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
+                <p className="leading-relaxed mb-4" style={{ color: '#333333' }}>
                   {category.description}
                 </p>
                 <span className={`inline-flex items-center font-semibold ${category.textColor}`}>

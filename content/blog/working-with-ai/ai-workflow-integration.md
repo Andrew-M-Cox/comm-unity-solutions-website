@@ -3,7 +3,7 @@ title: "Integrating AI into Your Communication Workflow"
 date: "2024-01-04"
 category: "working-with-ai"
 excerpt: "Practical steps for incorporating AI tools into your existing communication processes. Learn what tasks benefit most from AI assistance and how to maintain quality control."
-draft: false
+draft: true
 ---
 
 <p class="lead">Integrating AI effectively requires understanding what it does well and where human creativity is essential.</p>

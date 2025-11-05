@@ -3,7 +3,7 @@ title: "Church Management Software: A Complete Overview"
 date: "2024-01-20"
 category: "software-tips-tactics"
 excerpt: "Navigate the landscape of church management software options. Compare features, pricing, and find the right solution for your organization's size and needs."
-draft: false
+draft: true
 ---
 
 <p class="lead">The right church management software can transform your communication and operations. Here's how to choose wisely.</p>

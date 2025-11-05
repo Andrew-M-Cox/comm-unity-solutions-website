@@ -36,29 +36,57 @@
       console.log('Callback page loaded', { code, token });
       
       if (token) {
-        console.log('Callback page: Token received, storing in localStorage');
+        console.log('Callback page: Token received, fetching GitHub user info');
+        document.querySelector('.message p').textContent = 'Fetching user information...';
         
-        // Store token in localStorage
-        localStorage.setItem('netlify-cms-user', JSON.stringify({
-          token: token,
-          backendName: 'github'
-        }));
-        
-        console.log('Callback page: Token stored, reloading opener window');
-        document.querySelector('.message p').textContent = 'Authentication successful! Redirecting...';
-        
-        // Reload the opener window to trigger Decap CMS to check for the token
-        if (window.opener) {
-          window.opener.location.reload();
+        // Fetch GitHub user info using the token
+        fetch('https://api.github.com/user', {
+          headers: {
+            'Authorization': 'token ' + token,
+            'Accept': 'application/json'
+          }
+        })
+        .then(function(response) {
+          if (!response.ok) {
+            throw new Error('Failed to fetch user info: ' + response.status);
+          }
+          return response.json();
+        })
+        .then(function(user) {
+          console.log('Callback page: User info received', user);
           
-          setTimeout(function() {
-            console.log('Callback page: Closing window');
-            window.close();
-          }, 1000);
-        } else {
-          console.error('Callback page: No window.opener found!');
-          document.querySelector('.message p').textContent = 'Error: Unable to communicate with main window.';
-        }
+          // Store in Decap CMS format with full user object
+          const userData = {
+            token: token,
+            backendName: 'github',
+            login: user.login,
+            name: user.name,
+            avatar_url: user.avatar_url,
+            email: user.email
+          };
+          
+          localStorage.setItem('netlify-cms-user', JSON.stringify(userData));
+          console.log('Callback page: User data stored in localStorage', userData);
+          
+          document.querySelector('.message p').textContent = 'Authentication successful! Redirecting...';
+          
+          // Reload the opener window to trigger Decap CMS to check for the token
+          if (window.opener) {
+            window.opener.location.reload();
+            
+            setTimeout(function() {
+              console.log('Callback page: Closing window');
+              window.close();
+            }, 1000);
+          } else {
+            console.error('Callback page: No window.opener found!');
+            document.querySelector('.message p').textContent = 'Error: Unable to communicate with main window.';
+          }
+        })
+        .catch(function(error) {
+          console.error('Callback page: Error fetching user info', error);
+          document.querySelector('.message p').textContent = 'Error: ' + error.message;
+        });
       } else if (code) {
         // If we have a code, exchange it for a token
         fetch('/.netlify/functions/auth?code=' + code)

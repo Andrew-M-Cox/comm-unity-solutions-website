@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+'use client';
+
 import { Poppins } from "next/font/google";
+import { usePathname } from "next/navigation";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
@@ -9,25 +11,27 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-export const metadata: Metadata = {
-  title: "CommUnity Solutions - Church & Faith-Based Communication Intelligence",
-  description: "Premier space for progressive protestant church and faith-based non-profit communication intelligence. Consulting, strategy sessions, and expert guidance.",
-  keywords: ["church communication", "faith-based nonprofits", "church strategy", "nonprofit communication", "church marketing"],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const isAdminRoute = pathname?.startsWith('/admin');
+
   return (
     <html lang="en">
+      <head>
+        <title>CommUnity Solutions - Church & Faith-Based Communication Intelligence</title>
+        <meta name="description" content="Premier space for progressive protestant church and faith-based non-profit communication intelligence. Consulting, strategy sessions, and expert guidance." />
+        <meta name="keywords" content="church communication, faith-based nonprofits, church strategy, nonprofit communication, church marketing" />
+      </head>
       <body className={poppins.variable}>
-        <Navbar />
-        <main className="min-h-screen">
+        {!isAdminRoute && <Navbar />}
+        <main className={isAdminRoute ? '' : 'min-h-screen'}>
           {children}
         </main>
-        <footer className="bg-gray-900 text-white py-12">
+        {!isAdminRoute && <footer className="bg-gray-900 text-white py-12">
           <div className="container-custom">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
               <div>
@@ -56,7 +60,7 @@ export default function RootLayout({
               <p>&copy; {new Date().getFullYear()} CommUnity Solutions. All rights reserved.</p>
             </div>
           </div>
-        </footer>
+        </footer>}
       </body>
     </html>
   );

@@ -25,14 +25,9 @@ export default function AdminPage() {
       />
       <div id="nc-root"></div>
       <style jsx global>{`
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          width: 100%;
-        }
         #nc-root {
           min-height: 100vh;
+          width: 100%;
         }
       `}</style>
     </>
